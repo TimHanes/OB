@@ -1,0 +1,21 @@
+﻿@model IEnumerable<string>
+
+
+@Html.ActionLink("Home", "List", "Client")
+
+@foreach (var link in Model)
+{
+  @Html.RouteLink(link, new
+    {
+      controller = "Client",
+      action = "List",
+      status = link,
+      page = 1
+    },
+    new {
+    @class = link == ViewBag.SelectedStatus ? "selected" : null
+  })
+}
+<p>@Html.ActionLink("Add a new client", "Create", "Client")</p>
+
+        

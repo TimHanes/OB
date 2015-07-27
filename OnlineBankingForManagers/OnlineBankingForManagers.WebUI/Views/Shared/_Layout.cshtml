@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        
+        <div class="title">
+            
+            <img src="~/Content/images/logon.png" />
+            Welcome to online banking system
+
+
+            <div id="showaccount">
+
+                @{
+
+                    var name = HttpContext.Current.User.Identity.Name;
+                    if (name != "")
+                    {
+                        <a>You are loggend in as @name</a>              
+                        @Html.ActionLink("Logout", "LogOff", "Account")
+                    }
+   
+}
+
+            </div>
+
+    </header>
+   <div>
+        @if (TempData["message"] != null)
+        {
+            <div class="Message">@TempData["message"]</div>
+        }
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <footer id="mainFooter">
+        &#64;<a> </a>@DateTime.Now.Year <a> Online Banking. All rights reserved. </a>
+    </footer>
+</body>
+</html>

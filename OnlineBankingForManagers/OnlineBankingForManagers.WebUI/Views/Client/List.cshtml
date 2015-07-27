@@ -1,0 +1,23 @@
+﻿@model OnlineBankingForManagers.WebUI.Models.ClientsListViewModel
+@{
+  ViewBag.Title = "Clients";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="categories">
+    @{ Html.RenderAction("Menu", "Nav"); }
+   
+    
+</div>
+<div>
+    @{
+        var grid = new WebGrid(Model.Clients, defaultSort: "Name");
+    }
+    @grid.GetHtml()
+</div>
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+                new { page = x, status = Model.CurrentStatus}))
+</div>
+
+ 

@@ -1,0 +1,14 @@
+﻿@model OnlineBankingForManagers.Domain.Personages.Client
+
+@{
+    ViewBag.Title = "Client: Edit " + @Model.Firstname;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit @Model.Firstname</h1>
+@using (Html.BeginForm("Edit", "Client"))
+{
+  @Html.EditorForModel()
+  <input type="submit" value="Save" />
+  @Html.ActionLink("Cancel and return to List", "List")
+}
