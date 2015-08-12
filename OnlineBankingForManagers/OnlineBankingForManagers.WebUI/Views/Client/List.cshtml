@@ -1,23 +1,54 @@
 ﻿@model OnlineBankingForManagers.WebUI.Models.ClientsListViewModel
+
 @{
-  ViewBag.Title = "Clients";
-  Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="categories">
     @{ Html.RenderAction("Menu", "Nav"); }
-   
-    
-</div>
-<div>
-    @{
-        var grid = new WebGrid(Model.Clients, defaultSort: "Name");
-    }
-    @grid.GetHtml()
-</div>
-<div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-                new { page = x, status = Model.CurrentStatus}))
+
+
 </div>
 
- 
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Clients)
+    {
+        <tr onclick= "window.location.href='@Url.Action("Edit","Client",item)'">
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deposit)
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+                new { page = x, status = Model.CurrentStatus }))
+</div>
