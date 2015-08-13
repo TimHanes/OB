@@ -10,6 +10,7 @@ namespace OnlineBankingForManagers.WebUI.Models
         public IEnumerable<Client> Clients { get; set; }
         public PagingInfo PagingInfo { get; set; }
         public string CurrentStatus { get; set; }
+        public string CurrentSort { get; set; }
        
     }
 }

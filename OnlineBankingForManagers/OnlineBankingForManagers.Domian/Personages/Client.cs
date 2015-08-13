@@ -27,7 +27,7 @@ namespace OnlineBankingForManagers.Domain.Personages
         [Required(ErrorMessage = "Please enter a Phone Number ")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
-
+        [Display(Name = "Login")]
         [Required(ErrorMessage = "Please enter a Status")]
         public string Status { get; set; }
 

@@ -8,21 +8,31 @@
 <div id="categories">
     @{ Html.RenderAction("Menu", "Nav"); }
 
-
+    @{var clients = Model.Clients.ToList();
+      var columnNames = clients[0].GetType().GetProperties().ToList();
+      columnNames.RemoveRange(0, 1);
+      }
 </div>
 
 
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CurrentStatus)
-        </th>
+        @foreach (var name in columnNames)
+        {
+        
+        <th onclick="window.location.href='@Url.Action("List", "Client", new {
+                                          page = 1, status = Model.CurrentStatus,
+                                          sort = name.Name.ToString()
+                                      })'">@name.Name.ToString() </th>}
         <th></th>
-    </tr>
 
-    @foreach (var item in Model.Clients)
+    </tr>
+    
+    @foreach (var item in clients)
     {
         <tr onclick= "window.location.href='@Url.Action("Edit","Client",item)'">
+       
+
             <td>
                 @Html.DisplayFor(modelItem => item.ContractNumber)
             </td>
@@ -50,5 +60,5 @@
 </table>
 <div class="pager">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-                new { page = x, status = Model.CurrentStatus }))
+                new { page = x, status = Model.CurrentStatus, sort = Model.CurrentSort }))
 </div>

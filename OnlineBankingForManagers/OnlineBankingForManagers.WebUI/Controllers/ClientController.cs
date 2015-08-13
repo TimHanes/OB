@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using OnlineBankingForManagers.Domain.Abstract;
 using OnlineBankingForManagers.Domain.Personages;
 using OnlineBankingForManagers.WebUI.Models;
+using System.Linq.Dynamic;
 
 namespace OnlineBankingForManagers.WebUI.Controllers
 {
@@ -22,13 +23,13 @@ namespace OnlineBankingForManagers.WebUI.Controllers
         {
             repository = repo;
         }
-        public ViewResult List(string status, int page = 1)
+        public ViewResult List(string status, string sort = "ClientId", int page = 1)
         {
             ClientsListViewModel model = new ClientsListViewModel
             {
                 Clients = repository.Clients
               .Where(c => ((status == null)||(c.Status == status)))
-                    .OrderBy(c => c.ClientId)
+                  .OrderBy(sort)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize),
                 PagingInfo = new PagingInfo
@@ -39,8 +40,11 @@ namespace OnlineBankingForManagers.WebUI.Controllers
         repository.Clients.Count() :
         repository.Clients.Where(e => e.Status == status).Count()
                 },
-                CurrentStatus = status
+                CurrentStatus = status,
+                CurrentSort = sort
             };
+
+           // model.Clients = repository.Clients.OrderBy(sort);
 
 
             return View(model);
