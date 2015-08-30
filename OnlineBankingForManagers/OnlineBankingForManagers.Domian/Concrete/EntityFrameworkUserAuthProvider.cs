@@ -60,7 +60,7 @@ namespace OnlineBankingForManagers.Domain.Concrete
                 new Sendler().SendMail("smtp.mail.ru", "timofey-taliya@mail.ru", "Trans220", dbUser.Email,
                     "Online Banking",
 
-                    "Your account is blocked For unblocked ckick on this link " +
+                    "Your account is blocked. For unblocked ckick on this link " +
                     "http://localhost:2599/" + "Account/UnBlockedAccount/?login=" + dbUser.Login);
                 return VerificationType.Blocked;
             }
