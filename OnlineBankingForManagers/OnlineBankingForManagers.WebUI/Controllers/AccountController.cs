@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using OnlineBankingForManagers.Domain.Abstract;
-
+using OnlineBankingForManagers.Domain.Components;
 using OnlineBankingForManagers.WebUI.Models;
 using OnlineBankingForManagers.Domain.Personages;
 using OnlineBankingForManagers.WebUI.Infrastructure.Abstract;
@@ -18,8 +18,13 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             authProvider = auth;
             authCookie = cookie;
         }
-        
-     
+
+
+        public ViewResult UnBlockedAccount( string login)
+        {
+            authProvider.UnBlockedUser(login);
+            return View(); 
+        }
         public ViewResult Login()
         {
             return View();
@@ -30,9 +35,9 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             
             if (ModelState.IsValid)
             {
-                
+                VerificationType _verificationType = authProvider.AuthUser(model.UserName, model.Password);
 
-                if (authProvider.AuthUser(model.UserName, model.Password))
+                if (_verificationType == VerificationType.Executed)
                 {
                     authCookie.AuthCookie(model.UserName, model.RememberMe);
               
@@ -48,7 +53,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Incorrect username or password");
+                    ModelState.AddModelError("", _verificationType.ToString());
                     return View();
                 }
             }
@@ -92,6 +97,8 @@ namespace OnlineBankingForManagers.WebUI.Controllers
 
             return View(model);
         }
+
+
 
     }
 }

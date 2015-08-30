@@ -64,9 +64,11 @@
   <ItemGroup>
     <Compile Include="Abstract\IAuthProvider.cs" />
     <Compile Include="Abstract\IClientsRepository.cs" />
+    <Compile Include="Components\VerificationType.cs" />
     <Compile Include="Concrete\EntityFrameworkClientRepository.cs" />
     <Compile Include="Concrete\EntityFrameworkDbContext.cs" />
     <Compile Include="Concrete\EntityFrameworkUserAuthProvider.cs" />
+    <Compile Include="Handlers\Sendler.cs" />
     <Compile Include="Personages\Client.cs" />
     <Compile Include="Personages\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

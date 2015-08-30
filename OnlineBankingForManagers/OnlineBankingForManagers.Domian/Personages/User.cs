@@ -13,6 +13,9 @@ namespace OnlineBankingForManagers.Domain.Personages
         [HiddenInput(DisplayValue = false)]
         public int UserId { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
+        public int NumWrongPassword { get; set; }
+
         [Required(ErrorMessage = "Please enter a Login")]
         public string Login { get; set; }
 
