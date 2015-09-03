@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace OnlineBankingForManagers.WebUI.Models
 {
     public class RegisterViewModel
     {
-        
+        private string address;
+
+
         [Required]
         [Display(Name = "Login:")]
         public string UserName { get; set; }
@@ -29,9 +32,16 @@ namespace OnlineBankingForManagers.WebUI.Models
         [Display(Name = "Email:")]
         public string Email { get; set; }
 
-        [Required]
+        
         [DataType(DataType.MultilineText)]
         [Display(Name = "Address:")]
-        public string Address { get; set; }
+        public string Address {
+            get { return address; }
+            set
+            {
+                if (value != null) address = value;
+                else address = "no address";
+            }
+        }
     }
 }

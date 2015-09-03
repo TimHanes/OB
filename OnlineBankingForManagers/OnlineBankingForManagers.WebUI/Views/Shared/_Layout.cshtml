@@ -15,9 +15,10 @@
     <header>
         
         <div class="title">
+
             
-            <img src="~/Content/images/logon.png" />
-            Welcome to online banking system
+            <img src="~/Content/images/logon.png" onclick="window.location.href='@Url.Action("List", "Client")'" />
+            <a onclick="window.location.href = '@Url.Action("List", "Client")'"> welcome to online banking system </a>
 
 
             <div id="showaccount">
@@ -27,10 +28,10 @@
                     var name = HttpContext.Current.User.Identity.Name;
                     if (name != "")
                     {
-                        <a>You are loggend in as @name</a>              
+                        <a>You are loggend in as @name</a>
                         @Html.ActionLink("Logout", "LogOff", "Account")
                     }
-   
+
 }
 
             </div>

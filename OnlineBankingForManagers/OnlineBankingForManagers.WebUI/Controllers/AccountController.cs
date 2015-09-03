@@ -9,7 +9,6 @@ namespace OnlineBankingForManagers.WebUI.Controllers
 {
     public class AccountController : Controller
     {
-
         private IAuthProvider authProvider;
         private IAuthCookie authCookie;
 
@@ -35,6 +34,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             
             if (ModelState.IsValid)
             {
+               
                 VerificationType _verificationType = authProvider.AuthUser(model.UserName, model.Password);
 
                 if (_verificationType == VerificationType.Executed)

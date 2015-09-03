@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Principal;
 using System.Text;
+using log4net;
 using OnlineBankingForManagers.Domain.Abstract;
 using OnlineBankingForManagers.Domain.Components;
 using OnlineBankingForManagers.Domain.Handlers;
@@ -11,10 +12,11 @@ using OnlineBankingForManagers.Domain.Personages;
 
 namespace OnlineBankingForManagers.Domain.Concrete
 {
+   
     public class EntityFrameworkUserAuthProvider : IAuthProvider
     {
         private EntityFrameworkDbContext context = new EntityFrameworkDbContext();
-        
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool CreateUser(User user)
         {
             if (user.UserId == 0)
@@ -53,24 +55,30 @@ namespace OnlineBankingForManagers.Domain.Concrete
 
             if (dbUser == null) return VerificationType.LoginIncorrect;
             
-            if (dbUser.NumWrongPassword > 5)
-            {
-                if (dbUser.Password == password) return VerificationType.UnBlocked;
+           
 
-                new Sendler().SendMail("smtp.mail.ru", "timofey-taliya@mail.ru", "Trans220", dbUser.Email,
-                    "Online Banking",
-
-                    "Your account is blocked. For unblocked ckick on this link " +
-                    "http://localhost:2599/" + "Account/UnBlockedAccount/?login=" + dbUser.Login);
-                return VerificationType.Blocked;
-            }
+           
 
             if (dbUser.Password != password)
             {
                 dbUser.NumWrongPassword++;
                 context.SaveChanges();
+
+                if (dbUser.NumWrongPassword == 5)
+                {
+
+                    logger.Warn("Blocked " + dbUser.Login + " account");
+
+                    new Sendler().SendMail("smtp.mail.ru", "timofey-taliya@mail.ru", "Trans220", dbUser.Email,
+                        "Online Banking",
+
+                        "Your account is blocked. For unblocked ckick on this link " +
+                        "http://localhost:2599/" + "Account/UnBlockedAccount/?login=" + dbUser.Login);                    
+                }
+                if (dbUser.NumWrongPassword >= 5) return VerificationType.Blocked;
                 return VerificationType.PasswordIncorrect;
             }
+            
             if (dbUser.NumWrongPassword > 0)
             {
                 dbUser.NumWrongPassword = 0;

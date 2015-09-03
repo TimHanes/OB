@@ -1,0 +1,2 @@
+ERROR 2015-09-03 10:52:15,452 96632ms AccountController      Login              - Ok is log file
+WARN  2015-09-03 11:38:55,839 116322ms meworkUserAuthProvider AuthUser           - Blocked TimHan account
