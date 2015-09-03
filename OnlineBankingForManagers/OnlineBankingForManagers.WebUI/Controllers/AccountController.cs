@@ -9,19 +9,19 @@ namespace OnlineBankingForManagers.WebUI.Controllers
 {
     public class AccountController : Controller
     {
-        private IAuthProvider authProvider;
+        private IUserProvider _userProvider;
         private IAuthCookie authCookie;
 
-        public AccountController(IAuthProvider auth, IAuthCookie cookie)
+        public AccountController(IUserProvider user, IAuthCookie cookie)
         {
-            authProvider = auth;
+            _userProvider = user;
             authCookie = cookie;
         }
 
 
         public ViewResult UnBlockedAccount( string login)
         {
-            authProvider.UnBlockedUser(login);
+            _userProvider.UnBlocked(login);
             return View(); 
         }
         public ViewResult Login()
@@ -35,7 +35,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             if (ModelState.IsValid)
             {
                
-                VerificationType _verificationType = authProvider.AuthUser(model.UserName, model.Password);
+                VerificationType _verificationType = _userProvider.Authentification(model.UserName, model.Password);
 
                 if (_verificationType == VerificationType.Executed)
                 {
@@ -84,14 +84,14 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             if (ModelState.IsValid)
             {
               
-                if (authProvider.CreateUser(user))
+                if (_userProvider.Register(user))
                 {
                    
                     return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Ошибка при регистрации");
+                    ModelState.AddModelError("", "Error registration");
                 }
             }
 

@@ -13,11 +13,11 @@ using OnlineBankingForManagers.Domain.Personages;
 namespace OnlineBankingForManagers.Domain.Concrete
 {
    
-    public class EntityFrameworkUserAuthProvider : IAuthProvider
+    public class EntityFrameworkUserUserProvider : IUserProvider
     {
         private EntityFrameworkDbContext context = new EntityFrameworkDbContext();
-        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public bool CreateUser(User user)
+        readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public bool Register(User user)
         {
             if (user.UserId == 0)
             {
@@ -34,10 +34,20 @@ namespace OnlineBankingForManagers.Domain.Concrete
                     dbEntry.Password = user.Password;
                 }
             }
-            context.SaveChanges();
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch
+            {
+                logger.Error("Cann't save user "+user.Login+" into DB");
+                return false;
+
+            }
             return true;
         }
-        public User DeleteUser(int userID)
+        public User Delete(int userID)
         {
             User dbEntry = context.Users.Find(userID);
             if (dbEntry != null)
@@ -48,7 +58,7 @@ namespace OnlineBankingForManagers.Domain.Concrete
             return dbEntry;
         }
 
-        public VerificationType AuthUser(string login, string password)
+        public VerificationType Authentification(string login, string password)
         {
             User dbUser = context.Users
                  .FirstOrDefault(p => p.Login == login);
@@ -87,12 +97,12 @@ namespace OnlineBankingForManagers.Domain.Concrete
             return VerificationType.Executed;
         }
 
-        public User EditUser(User user)
+        public User Edit(User user)
         {
             return user;
         }
 
-        public bool UnBlockedUser(string login)
+        public bool UnBlocked(string login)
         {
             User dbUser = context.Users
                  .FirstOrDefault(p => p.Login == login);

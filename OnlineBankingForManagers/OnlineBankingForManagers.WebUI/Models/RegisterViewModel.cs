@@ -17,14 +17,14 @@ namespace OnlineBankingForManagers.WebUI.Models
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Пароль должен иметь от 6 до 100 символов", MinimumLength = 6)]
+        [StringLength(16, ErrorMessage = "The password must have 8 to 16 characters", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Password:")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Repeat Password:")]
-        [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
+        [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -37,10 +37,8 @@ namespace OnlineBankingForManagers.WebUI.Models
         [Display(Name = "Address:")]
         public string Address {
             get { return address; }
-            set
-            {
-                if (value != null) address = value;
-                else address = "no address";
+            set {
+                address = value ?? "no address";
             }
         }
     }

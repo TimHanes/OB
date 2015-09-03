@@ -28,7 +28,7 @@ namespace OnlineBankingForManagers.WebUI.Infrastructure
     private void AddBindings()
     {
         ninjectKernel.Bind<IClientRepository>().To<EntityFrameworkClientRepository>();
-        ninjectKernel.Bind<IAuthProvider>().To<EntityFrameworkUserAuthProvider>();
+        ninjectKernel.Bind<IUserProvider>().To<EntityFrameworkUserUserProvider>();
         ninjectKernel.Bind<IAuthCookie>().To<AuthRememberMe>();
     }
     }

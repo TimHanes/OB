@@ -27,11 +27,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
         {
             ClientsListViewModel model = new ClientsListViewModel
             {
-                Clients = repository.Clients
-              .Where(c => ((status == null)||(c.Status == status)))
-                  .OrderBy(sort)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize),
+                
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
@@ -44,6 +40,11 @@ namespace OnlineBankingForManagers.WebUI.Controllers
                 CurrentSort = sort
             };
 
+            model.Clients = repository.Clients
+                .Where(c => ((status == null) || (c.Status == status)))
+                .OrderBy(sort)
+                .Skip((page - 1)*PageSize)
+                .Take(PageSize);
            // model.Clients = repository.Clients.OrderBy(sort);
 
 
