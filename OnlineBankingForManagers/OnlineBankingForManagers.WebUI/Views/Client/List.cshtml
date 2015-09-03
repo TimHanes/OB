@@ -66,5 +66,8 @@
  else { <a> The database is empty  </a> }
 <div class="pager">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-                new { page = x, status = Model.CurrentStatus, sort = Model.CurrentSort }))
+        new {page = x, status = Model.CurrentStatus, sort = Model.CurrentSort}))
 </div>
+
+
+

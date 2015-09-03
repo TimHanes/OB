@@ -16,6 +16,7 @@ namespace OnlineBankingForManagers.WebUI.Models
         [Display(Name = "Login:")]
         public string UserName { get; set; }
 
+       
         [Required]
         [StringLength(16, ErrorMessage = "The password must have 8 to 16 characters", MinimumLength = 8)]
         [DataType(DataType.Password)]

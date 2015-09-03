@@ -1,53 +1,61 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-
-    <script src="~/Scripts/jquery-1.7.1.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
 
     <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+    <link href="~/Scripts/qTip/jquery.qtip.css" type="text/css" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/qTip/jquery.qtip.min.js")" type="text/javascript"></script>
+
+    <title>@ViewBag.Title</title>
+    
 </head>
 <body>
-    <header>
-        
-        <div class="title">
+<header>
 
-            
-            <img src="~/Content/images/logon.png" onclick="window.location.href='@Url.Action("List", "Client")'" />
-            <a onclick="window.location.href = '@Url.Action("List", "Client")'"> welcome to online banking system </a>
+    <div class="title">
+
+        <img src="~/Content/images/logon.png" onclick="window.location.href = '@Url.Action("List", "Client")'"/>
+        <a onclick="window.location.href = '@Url.Action("List", "Client")'"> welcome to online banking system </a>
 
 
-            <div id="showaccount">
+        <div id="showaccount">
 
-                @{
+            @{
 
-                    var name = HttpContext.Current.User.Identity.Name;
-                    if (name != "")
-                    {
-                        <a>You are loggend in as @name</a>
-                        @Html.ActionLink("Logout", "LogOff", "Account")
-                    }
+                var name = HttpContext.Current.User.Identity.Name;
+                if (name != "")
+                {
+                    <a>You are loggend in as @name</a>
+                    @Html.ActionLink("Logout", "LogOff", "Account")
+                }
 
-}
+            }
 
-            </div>
-
-    </header>
-   <div>
-        @if (TempData["message"] != null)
-        {
-            <div class="Message">@TempData["message"]</div>
-        }
+        </div>
     </div>
-    <div id="content">
-        @RenderBody()
-    </div>
-    <footer id="mainFooter">
-        &#64;<a> </a>@DateTime.Now.Year <a> Online Banking. All rights reserved. </a>
-    </footer>
+
+</header>
+<div>
+    @if (TempData["message"] != null)
+    {
+        <div class="Message">@TempData["message"]</div>
+    }
+</div>
+<div id="content">
+    @RenderBody()
+</div>
+<footer id="mainFooter">
+    &#64;<a> </a>@DateTime.Now.Year <a> Online Banking. All rights reserved. </a>
+</footer>
 </body>
 </html>
+
