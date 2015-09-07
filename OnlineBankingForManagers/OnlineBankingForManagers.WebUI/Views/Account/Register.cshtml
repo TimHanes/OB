@@ -10,7 +10,41 @@
 @using (Html.BeginForm())
 {
   @Html.ValidationSummary(true)
-  @Html.EditorForModel()
-    <p><input type="submit" value="Submit"/></p>
+    <table class="table-input-fields">
+        <tr>
+            <td></td>
+            <td>Please type next data:</td>
+        </tr>
+        <tr>
+
+            <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
+            <td>@Html.TextBoxFor(m => m.UserName, new { @title = "Your username." })*</td>
+            <td>@Html.ValidationMessageFor(m => m.UserName)</td>
+        </tr>
+        <tr>
+            <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
+            <td>@Html.PasswordFor(m => m.Password, new { @title = "Your password." })*</td>
+            <td>@Html.ValidationMessageFor(m => m.Password)</td>
+        </tr>
+        <tr>
+            <td class="label-input-field">@Html.LabelFor(m => m.ConfirmPassword):</td>
+            <td>@Html.PasswordFor(m => m.ConfirmPassword, new { @title = "Confirm your password." })*</td>
+            <td>@Html.ValidationMessageFor(m => m.ConfirmPassword)</td>
+        </tr>
+        <tr>
+            <td class="label-input-field">@Html.LabelFor(m => m.Email):</td>
+            <td>@Html.TextBoxFor(m => m.Email, new {@type = "email", @title = "Your email." })*</td>
+            <td>@Html.ValidationMessageFor(m => m.Email)</td>
+        </tr>
+        <tr>
+            <td class="label-input-field">@Html.LabelFor(m => m.Address):</td>
+            <td>@Html.TextBoxFor(m => m.Address, new { @title = "Your address." })</td>
+            <td>@Html.ValidationMessageFor(m => m.Address)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" title="Press for submit" /></td>
+        </tr>
+    </table>
 }
 

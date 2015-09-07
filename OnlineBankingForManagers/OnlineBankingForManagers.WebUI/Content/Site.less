@@ -1,25 +1,59 @@
-body {
+﻿@header-color:#2c77ba;
+@footer-color:#aad0f2;
+@select-border-color:#2c77ba;
+@select-backgraund-color:#C6E2EE;
+@error-border-color:red;
+@error-backgraund-color:#ff9582;
+@span-color:#160b5f;
+@border-solid:2px solid;
 
-   
-    font-family:Arial, Helvetica, sans-serif;
+font-family:Arial, Helvetica, sans-serif;
 
-    header, footer {
-        background: #2c77ba;
-
-        .title { 
-            text-align: center; 
-            
-
-        }
-    }
-
-    
-
-    #showaccount
-            {text-align:right }
-    #mainFooter {
-        text-align: center;
-    } 
-    #content {text-align: center;}  
+span{ 
+    color: @span-color;
 }
 
+[onclick]{
+ cursor: pointer; 
+}
+
+body {   
+    header{      
+        position: relative;
+        text-align: center;
+        background: @header-color; 
+                  
+        img{vertical-align: middle; 
+            border:10px solid @header-color;                        
+        }
+        a{font-size:20px;}
+        #showaccount {
+            a{font-size:14px;}
+            position:absolute;
+            bottom:0;
+            right:0;
+            text-align:right;     
+        }    
+    } 
+    
+    footer{
+        background: @footer-color;
+        text-align: center;
+    }
+}
+
+.text-box:focus{
+    border:@border-solid @select-border-color;
+    background-color:@select-backgraund-color;
+}
+
+input.input-validation-error
+{    
+    border:@border-solid @error-border-color;
+    background-color:@error-backgraund-color;
+}
+
+
+
+
+    
