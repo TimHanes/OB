@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using OnlineBankingForManagers.Domain.Components;
+using OnlineBankingForManagers.Domain.Models;
 
-namespace OnlineBankingForManagers.Domain.Personages
+namespace OnlineBankingForManagers.Domain.Models
 {
     public class Client
     {
@@ -15,10 +17,10 @@ namespace OnlineBankingForManagers.Domain.Personages
 
         
         [Required(ErrorMessage = "Please enter a Firstname")]
-         public string Firstname { get; set; }
+         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter a Lastname")]
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please enter a Date of Birth ")]
         [DataType(DataType.Date)]
@@ -30,7 +32,7 @@ namespace OnlineBankingForManagers.Domain.Personages
 
         [Display(Name = "Status")]
         [Required(ErrorMessage = "Please enter a Status")]
-        public string Status { get; set; }
+        public StatusType Status { get; set; }
 
        
         public bool Deposit  { get; set; }

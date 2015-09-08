@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using OnlineBankingForManagers.Domain.Personages;
 using System.Web.Helpers;
+using OnlineBankingForManagers.Domain.Models;
 
 namespace OnlineBankingForManagers.WebUI.Models
 {

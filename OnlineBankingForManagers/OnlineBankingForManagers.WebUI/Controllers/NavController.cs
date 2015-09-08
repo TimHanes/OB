@@ -20,7 +20,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
         {
             ViewBag.SelectedStatus = status;
             IEnumerable<string> statuses = repository.Clients
-              .Select(x => x.Status)
+              .Select(x => x.Status.ToString())
               .Distinct()
               .OrderBy(x => x);
             return PartialView(statuses);

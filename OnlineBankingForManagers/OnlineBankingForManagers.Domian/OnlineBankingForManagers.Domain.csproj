@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IUserProvider.cs" />
     <Compile Include="Abstract\IClientsRepository.cs" />
+    <Compile Include="Components\StatusType.cs" />
     <Compile Include="Components\VerificationType.cs" />
     <Compile Include="Concrete\EntityFrameworkClientRepository.cs" />
     <Compile Include="Concrete\EntityFrameworkDbContext.cs" />

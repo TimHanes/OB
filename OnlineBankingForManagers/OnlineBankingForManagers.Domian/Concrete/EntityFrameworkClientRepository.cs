@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using OnlineBankingForManagers.Domain.Abstract;
+using OnlineBankingForManagers.Domain.Models;
 using OnlineBankingForManagers.Domain.Personages;
 
 namespace OnlineBankingForManagers.Domain.Concrete
@@ -23,8 +24,8 @@ namespace OnlineBankingForManagers.Domain.Concrete
               if (dbEntry != null)
               {
                   dbEntry.ContractNumber = client.ContractNumber;
-                  dbEntry.Firstname = client.Firstname;
-                  dbEntry.Lastname = client.Lastname;
+                  dbEntry.FirstName = client.FirstName;
+                  dbEntry.LastName = client.LastName;
                   dbEntry.DateOfBirth = client.DateOfBirth;
                   dbEntry.PhoneNumber = client.PhoneNumber;
                   dbEntry.Status = client.Status;

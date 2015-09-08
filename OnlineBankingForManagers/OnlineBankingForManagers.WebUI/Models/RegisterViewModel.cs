@@ -13,7 +13,7 @@ namespace OnlineBankingForManagers.WebUI.Models
 
 
         [Required]
-        [Display(Name = "Login:")]
+        [Display(Name = "Login")]
         [StringLength(16, ErrorMessage = "The Login must have 8 to 16 characters", MinimumLength = 8)]
         public string UserName { get; set; }
 
@@ -21,22 +21,22 @@ namespace OnlineBankingForManagers.WebUI.Models
         [Required]
         [StringLength(16, ErrorMessage = "The password must have 8 to 16 characters", MinimumLength = 8)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password:")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Repeat Password:")]
+        [Display(Name = "Repeat Password")]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email:")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Address:")]
+        [Display(Name = "Address")]
         public string Address {
             get { return address; }
             set {

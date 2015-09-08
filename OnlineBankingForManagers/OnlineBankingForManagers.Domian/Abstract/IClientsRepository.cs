@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using OnlineBankingForManagers.Domain.Models;
 using OnlineBankingForManagers.Domain.Personages;
 
 namespace OnlineBankingForManagers.Domain.Abstract

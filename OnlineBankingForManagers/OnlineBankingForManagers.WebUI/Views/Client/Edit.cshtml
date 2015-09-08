@@ -1,14 +1,63 @@
-﻿@model OnlineBankingForManagers.Domain.Personages.Client
+﻿@using OnlineBankingForManagers.Domain.Components
+@model OnlineBankingForManagers.Domain.Models.Client
 
 @{
-    ViewBag.Title = "Client: Edit " + @Model.Firstname;
+    ViewBag.Title = "Client: Edit " + @Model.FirstName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit @Model.Firstname</h1>
+<h1>Edit @Model.FirstName</h1>
 @using (Html.BeginForm("Edit", "Client"))
 {
-  @Html.EditorForModel()
-  <input type="submit" value="Save" />
+    <table>
+
+        <tr>
+            <td></td>
+            <td>@Model.FirstName @Model.LastName</td>
+        </tr>
+
+        <tr>
+            <td >@Html.LabelFor(m => m.ContractNumber):</td>
+            <td>@Html.TextBoxFor(m => m.ContractNumber, new { @title = "Client's contract number", @type = "number" })*</td>
+            <td>@Html.ValidationMessageFor(m => m.ContractNumber)</td>
+        </tr>
+        <tr>
+
+            <td >@Html.LabelFor(m => m.FirstName):</td>
+            <td>@Html.TextBoxFor(m => m.FirstName, new { @title = "Client's firstname" })*</td>
+            <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
+        </tr>
+
+        <tr>
+            <td >@Html.LabelFor(m => m.LastName):</td>
+            <td>@Html.TextBoxFor(m => m.LastName, new { @title = "Client's lastname" })*</td>
+            <td>@Html.ValidationMessageFor(m => m.LastName)</td>
+        </tr>
+        <tr>
+            <td >@Html.LabelFor(m => m.DateOfBirth):</td>
+            <td>@Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new {  @title = "Client's date of birth", @type = "date", })*</td>
+            <td>@Html.ValidationMessageFor(m => m.DateOfBirth)</td>
+        </tr>
+        <tr>
+            <td >@Html.LabelFor(m => m.PhoneNumber):</td>
+            <td>@Html.TextBoxFor(m => m.PhoneNumber, new {  @title = "Client's phone number" })*</td>
+            <td>@Html.ValidationMessageFor(m => m.PhoneNumber)</td>
+        </tr>
+
+        <tr>
+            <td >@Html.LabelFor(m => m.Status):</td>
+            <td>@Html.DropDownListFor(m => m.Status,new SelectList(Enum.GetValues(typeof(StatusType)).Cast<StatusType>()), new { @title = "Client's status." })</td>
+            <td>@Html.ValidationMessageFor(m => m.Status)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td >
+                @Html.CheckBoxFor(m => m.Deposit, new { @title = "Client use deposit." })
+            - @Html.LabelFor(m => m.Deposit)
+        </td>
+        <td>@Html.ValidationMessageFor(m => m.Deposit)</td>
+    </tr>       
+</table>
+    <input type="submit" value="Save" title="Press for submit" />
   @Html.ActionLink("Cancel and return to List", "List")
 }

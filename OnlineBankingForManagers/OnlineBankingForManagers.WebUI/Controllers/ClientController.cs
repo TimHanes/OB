@@ -3,9 +3,10 @@ using System.Web.Mvc;
 using System.Web.Helpers;
 using System.Collections.Generic;
 using OnlineBankingForManagers.Domain.Abstract;
-using OnlineBankingForManagers.Domain.Personages;
+using OnlineBankingForManagers.Domain.Models;
 using OnlineBankingForManagers.WebUI.Models;
 using System.Linq.Dynamic;
+
 
 namespace OnlineBankingForManagers.WebUI.Controllers
 {
@@ -30,13 +31,13 @@ namespace OnlineBankingForManagers.WebUI.Controllers
                     ItemsPerPage = PageSize,
                     TotalItems = status == null ?
         repository.Clients.Count() :
-        repository.Clients.Where(e => e.Status == status).Count()
+        repository.Clients.Where(e => e.Status.ToString() == status).Count()
                 };
                 model.CurrentStatus = status;
                 model.CurrentSort = sort;
 
             model.Clients = repository.Clients
-                .Where(c => ((status == null) || (c.Status == status)))
+                .Where(c => ((status == null) || (c.Status.ToString() == status)))
                 .OrderBy(sort)
                 .Skip((page - 1)*PageSize)
                 .Take(PageSize);

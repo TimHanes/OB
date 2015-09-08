@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using OnlineBankingForManagers.Domain.Models;
 using OnlineBankingForManagers.Domain.Personages;
 
 namespace OnlineBankingForManagers.Domain.Concrete
