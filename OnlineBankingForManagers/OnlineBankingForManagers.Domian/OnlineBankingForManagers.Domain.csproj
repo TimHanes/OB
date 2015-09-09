@@ -50,6 +50,10 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -68,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IUserProvider.cs" />
     <Compile Include="Abstract\IClientsRepository.cs" />
+    <Compile Include="Attributes\DateTimeRangeAttribute.cs" />
     <Compile Include="Components\StatusType.cs" />
     <Compile Include="Components\VerificationType.cs" />
     <Compile Include="Concrete\EntityFrameworkClientRepository.cs" />
@@ -90,11 +95,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.8.3.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.3.js" />
-    <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\qTip\jquery.qtip.css" />
     <Content Include="Scripts\qTip\jquery.qtip.js" />
     <Content Include="Scripts\qTip\jquery.qtip.min.css" />

@@ -8,7 +8,7 @@ namespace OnlineBankingForManagers.Domain.Components
 {
     public enum StatusType
     {
-        Vip, Classic
+        Classic,Vip 
 
     }
 

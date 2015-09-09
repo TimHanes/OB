@@ -1,13 +1,17 @@
 ﻿@header-color:#2c77ba;
 @footer-color:#aad0f2;
-@select-border-color:#2c77ba;
-@select-backgraund-color:#C6E2EE;
-@error-border-color:red;
-@error-backgraund-color:#ff9582;
 @span-color:#160b5f;
+@border-color: #a1d3ff;
+@backgraund-color:#eef8ff;
 @border-solid:2px solid;
-
-font-family:Arial, Helvetica, sans-serif;
+@select-border-color:#79bcf7;
+@select-backgraund-color:#f7ffff;
+@error-border-color:red;
+@error-backgraund-color:#ff8c8c;
+@error-select-border-color:#f64ece;
+@error-select-backgraund-color:#ffd4f6;
+@border-solid:1px solid;
+@select-border-solid:2px solid;
 
 span{ 
     color: @span-color;
@@ -18,6 +22,7 @@ span{
 }
 
 body {   
+    font-family:Arial, Helvetica, sans-serif;
     header{      
         position: relative;
         text-align: center;
@@ -42,15 +47,26 @@ body {
     }
 }
 
-.text-box:focus{
-    border:@border-solid @select-border-color;
+input:focus,select:focus{
+    border:@select-border-solid @select-border-color;
     background-color:@select-backgraund-color;
+}
+
+input,select{
+    border:@border-solid @border-color;
+    background-color:@backgraund-color;
 }
 
 input.input-validation-error
 {    
     border:@border-solid @error-border-color;
     background-color:@error-backgraund-color;
+}
+
+input.input-validation-error:focus
+{    
+    border:@error-select-border-color @select-border-solid;
+    background-color:@error-select-backgraund-color;
 }
 
 

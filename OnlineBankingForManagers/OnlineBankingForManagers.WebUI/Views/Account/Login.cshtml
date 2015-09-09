@@ -15,19 +15,34 @@
         <tr>
 
             <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
-            <td>@Html.TextBoxFor(m => m.UserName, new {  @title = "Your username." })</td>
+            <td>@Html.TextBoxFor(m => m.UserName, new
+                {
+                    @placeholder = "Type your login",
+                    @class = "focus",
+                    @title = "Your username."
+                })</td>
             <td>@Html.ValidationMessageFor(m => m.UserName)</td>
         </tr>
 
         <tr>
             <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
-            <td>@Html.PasswordFor(m => m.Password, new {  @title = "Your password." })</td>
+            <td>
+                @Html.PasswordFor(m => m.Password, new
+                {
+                    @placeholder = "Type your password",
+                    @title = "Your password."
+                })
+        </td>
+
             <td>@Html.ValidationMessageFor(m => m.Password)</td>
         </tr>
         <tr>
             <td></td>
             <td class="checkbox">
-                @Html.CheckBoxFor(m => m.RememberMe, new { @title = "For remember user." })
+                @Html.CheckBoxFor(m => m.RememberMe, new
+                {
+                    @title = "For remember user."
+                })
                 - @Html.LabelFor(m => m.RememberMe)
             </td>
             <td>@Html.ValidationMessageFor(m => m.RememberMe)</td>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Helpers;
 using System.Collections.Generic;
@@ -29,12 +30,17 @@ namespace OnlineBankingForManagers.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = status == null ?
-        repository.Clients.Count() :
-        repository.Clients.Where(e => e.Status.ToString() == status).Count()
+                    
                 };
+            
+           
+                var a = status == null
+                ? repository.Clients
+                : repository.Clients.Where(e => e.Status.ToString() == status);
                 model.CurrentStatus = status;
                 model.CurrentSort = sort;
+
+            model.PagingInfo.TotalItems = a.Count();
 
             model.Clients = repository.Clients
                 .Where(c => ((status == null) || (c.Status.ToString() == status)))
@@ -68,7 +74,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
         }
         public ViewResult Create()
         {
-            return View("Edit", new Client());
+            return View("Edit", new Client() { DateOfBirth = DateTime.Today, ContractNumber = null});
         }
         [HttpPost]
         public ActionResult Delete(int clientId)
@@ -76,7 +82,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             Client deletedClient = repository.DeleteClient(clientId);
             if (deletedClient != null)
             {
-                TempData["message"] = string.Format("{0} was deleted", deletedClient.ContractNumber);
+                TempData["message"] = string.Format("{0} was deleted", deletedClient.ContractNumber.ToString());
             }
             return RedirectToAction("List");
         }

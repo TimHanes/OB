@@ -10,12 +10,13 @@ namespace OnlineBankingForManagers.WebUI.Models
     public class LoginViewModel
     {
         [Required]
-        
+        [StringLength(16)]
         [Display(Name = "Login")]
 
         public string UserName { get; set; }
 
         [Required]
+        [StringLength(16)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

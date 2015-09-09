@@ -32,12 +32,22 @@ body footer {
   background: #aad0f2;
   text-align: center;
 }
-.text-box:focus {
-  border: 2px solid #2c77ba;
-  background-color: #c6e2ee;
+input:focus,
+select:focus {
+  border: 2px solid #79bcf7;
+  background-color: #f7ffff;
+}
+input,
+select {
+  border: 1px solid #a1d3ff;
+  background-color: #eef8ff;
 }
 input.input-validation-error {
-  border: 2px solid red;
-  background-color: #ff9582;
+  border: 1px solid red;
+  background-color: #ff8c8c;
+}
+input.input-validation-error:focus {
+  border: #f64ece 2px solid;
+  background-color: #ffd4f6;
 }
 /*# sourceMappingURL=Site.css.map */

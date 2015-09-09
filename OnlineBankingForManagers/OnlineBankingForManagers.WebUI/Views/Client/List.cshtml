@@ -14,7 +14,7 @@
         var clients = Model.Clients.ToList();
 
         var columnNames = typeof (Client).GetProperties().ToList();
-        columnNames.RemoveRange(0, 1);
+       // columnNames.RemoveRange(0, 1);
     }
 
     <table>
@@ -54,7 +54,9 @@
     {
             <tr onclick="window.location.href='@Url.Action("Edit", "Client", item)'">
 
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientId)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ContractNumber)
                 </td>
