@@ -13,9 +13,10 @@
       page = 1
     },
     new {
-    @class = link == ViewBag.SelectedStatus ? "selected" : null
+        @class = link == ViewBag.SelectedStatus ? "selected" : null,
+        @title = "Choos filter"
   })
 }
-<p>@Html.ActionLink("Add a new client", "Create", "Client")</p>
+<p>@Html.ActionLink("Add a new client", "Create", "Client", null ,new{title = "Add new client"})</p>
 
         

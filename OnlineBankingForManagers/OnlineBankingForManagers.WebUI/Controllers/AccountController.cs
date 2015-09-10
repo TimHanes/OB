@@ -18,7 +18,6 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             authCookie = cookie;
         }
 
-
         public ViewResult UnBlockedAccount( string login)
         {
             _userProvider.UnBlocked(login);
@@ -34,10 +33,10 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             
             if (ModelState.IsValid)
             {
-               
-                VerificationType _verificationType = _userProvider.Authentification(model.UserName, model.Password);
 
-                if (_verificationType == VerificationType.Executed)
+                DbResultType _result = _userProvider.Authentification(model.UserName, model.Password);
+
+                if (_result == DbResultType.Executed)
                 {
                     authCookie.AuthCookie(model.UserName, model.RememberMe);
               
@@ -53,7 +52,7 @@ namespace OnlineBankingForManagers.WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", _verificationType.ToString());
+                    ModelState.AddModelError("", _result.ToString());
                     return View();
                 }
             }
@@ -81,24 +80,19 @@ namespace OnlineBankingForManagers.WebUI.Controllers
             user.Password = model.Password;
             user.Email= model.Email;
             user.Address = model.Address;
+            var result = _userProvider.Edit(user);
             if (ModelState.IsValid)
             {
-              
-                if (_userProvider.Register(user))
-                {
-                   
+                if (result == DbResultType.Executed)
+                {                  
                     return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Error registration");
+                    ModelState.AddModelError("", result.ToString());
                 }
             }
-
             return View(model);
         }
-
-
-
     }
 }

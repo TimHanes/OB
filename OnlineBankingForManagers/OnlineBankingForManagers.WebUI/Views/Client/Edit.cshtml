@@ -90,6 +90,7 @@
     </table>
     <input type="submit" value="Save" title="Press for submit" />
   @Html.ActionLink("Cancel and return to List", "List")
+  @Html.ActionLink("Delete the client ", "Delete", new{clientId=Model.ClientId})
 }
 
 <script>

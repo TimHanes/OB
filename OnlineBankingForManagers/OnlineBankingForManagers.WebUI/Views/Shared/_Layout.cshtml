@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
 
     <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/jquery-2.1.4.min.js")" type="text/javascript"></script>
@@ -11,50 +11,55 @@
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
-    
+
     <link href="~/Scripts/qTip/jquery.qtip.css" type="text/css" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/qTip/jquery.qtip.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/qTip/jquery.validate.unobtrusive.qtip.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.maskedinput.js")" type="text/javascript"></script>
-    
+
 
     <title>@ViewBag.Title</title>
 
 </head>
+
 <body>
-<header>
+    <div class="wrapper">
+        <header class="header">
 
-    <div class="title">
-        <div>
-            <a></a>
-        </div>
-        <img src="~/Content/images/logon.png" alt="Logon" title="Home" onclick="window.location.href = '@Url.Action("List", "Client")'" />
-        <a alt="Logon" title="Home" onclick="window.location.href = '@Url.Action("List", "Client")'"> Welcome to online banking system </a>
-        <div id="showaccount">
-            @{
-                var name = HttpContext.Current.User.Identity.Name;
-                if (name != "")
+            <div class="title">
+                <div>
+                    <a></a>
+                </div>
+                <img src="~/Content/images/logon.png" alt="Logon" title="Home" onclick="window.location.href = '@Url.Action("List", "Client")'"/>
+                <a alt="Logon" title="Home" onclick="window.location.href = '@Url.Action("List", "Client")'"> Welcome to online banking system </a>
+                <div id="showaccount">
+                    @{
+                        var name = HttpContext.Current.User.Identity.Name;
+                        if (name != "")
+                        {
+                            <a title=" Your login">You are loggend in as @name</a>
+                            @Html.ActionLink("Logout", "LogOff", "Account", null, new {@title = "Logout"})
+                        }
+                    }
+                </div>
+            </div>
+
+        </header>
+        <div class="content">
+            <div>
+                @if (TempData["message"] != null)
                 {
-                    <a title =" Your login">You are loggend in as @name</a>
-                    @Html.ActionLink("Logout", "LogOff", "Account",null,new { @title = "Logout" })
+                    <div class="Message">@TempData["message"]</div>
                 }
-            }
-        </div>
-   </div>
-
-</header>
-<div>
-    @if (TempData["message"] != null)
-    {
-        <div class="Message">@TempData["message"]</div>
-    }
-</div>
-<div id="content">
-    @RenderBody()
-</div>
-<footer id="mainFooter">
-    &#64;@DateTime.Now.Year <a title =" All rights reserved"> Online Banking. All rights reserved. </a>
-</footer>
-</body>
+            </div>
+            <div id="content">
+                @RenderBody()
+            </div>
+        </div>  
+        <footer class="footer">
+            &#64;@DateTime.Now.Year <a title=" All rights reserved"> Online Banking. All rights reserved. </a>
+        </footer>
+    </div>
+    </body>
 </html>
 

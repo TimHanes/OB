@@ -73,6 +73,7 @@
     <Compile Include="Abstract\IUserProvider.cs" />
     <Compile Include="Abstract\IClientsRepository.cs" />
     <Compile Include="Attributes\DateTimeRangeAttribute.cs" />
+    <Compile Include="Components\DbResultType.cs" />
     <Compile Include="Components\StatusType.cs" />
     <Compile Include="Components\VerificationType.cs" />
     <Compile Include="Concrete\EntityFrameworkClientRepository.cs" />

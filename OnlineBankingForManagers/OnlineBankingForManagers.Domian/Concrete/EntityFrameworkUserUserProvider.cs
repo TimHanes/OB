@@ -17,10 +17,17 @@ namespace OnlineBankingForManagers.Domain.Concrete
     {
         private EntityFrameworkDbContext context = new EntityFrameworkDbContext();
         readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public bool Register(User user)
+        public DbResultType Edit(User user)
         {
+
             if (user.UserId == 0)
             {
+                if ((context.Users.FirstOrDefault(p => p.Login == user.Login) != null))
+                    return DbResultType.NameIsOccupied;
+
+                if (context.Users.FirstOrDefault(p => p.Email == user.Email) != null)
+                    return DbResultType.EmailIsOccupied;
+
                 context.Users.Add(user);
             }
             else
@@ -42,32 +49,39 @@ namespace OnlineBankingForManagers.Domain.Concrete
             catch
             {
                 logger.Error("Cann't save user "+user.Login+" into DB");
-                return false;
+                return DbResultType.NotAvailable;
 
             }
-            return true;
+            return DbResultType.Executed;
         }
-        public User Delete(int userID)
+        public DbResultType Delete(int userID)
         {
             User dbEntry = context.Users.Find(userID);
             if (dbEntry != null)
             {
-                context.Users.Remove(dbEntry);
+                context.Users.Remove(dbEntry);               
+            }            
+            try
+            {
                 context.SaveChanges();
             }
-            return dbEntry;
+            catch
+            {
+                logger.Error("Cann't save user " + dbEntry.Login + " into DB");
+                return DbResultType.NotAvailable;
+
+            }
+            return DbResultType.Executed;
+
+
         }
 
-        public VerificationType Authentification(string login, string password)
+        public DbResultType Authentification(string login, string password)
         {
             User dbUser = context.Users
                  .FirstOrDefault(p => p.Login == login);
 
-            if (dbUser == null) return VerificationType.LoginIncorrect;
-            
-           
-
-           
+            if (dbUser == null) return DbResultType.NameIsOccupied;
 
             if (dbUser.Password != password)
             {
@@ -85,23 +99,18 @@ namespace OnlineBankingForManagers.Domain.Concrete
                         "Your account is blocked. For unblocked ckick on this link " +
                         "http://localhost:2599/" + "Account/UnBlockedAccount/?login=" + dbUser.Login);                    
                 }
-                if (dbUser.NumWrongPassword >= 5) return VerificationType.Blocked;
-                return VerificationType.PasswordIncorrect;
+                if (dbUser.NumWrongPassword >= 5) return DbResultType.Blocked;
+                return DbResultType.PasswordIncorrect;
             }
             
             if (dbUser.NumWrongPassword > 0)
             {
                 dbUser.NumWrongPassword = 0;
                 context.SaveChanges();  
-            }          
-            return VerificationType.Executed;
+            }
+            return DbResultType.Executed;
         }
-
-        public User Edit(User user)
-        {
-            return user;
-        }
-
+        
         public bool UnBlocked(string login)
         {
             User dbUser = context.Users

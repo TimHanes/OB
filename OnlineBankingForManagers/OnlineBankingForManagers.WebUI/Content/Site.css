@@ -4,6 +4,12 @@
 [onclick] {
   cursor: pointer;
 }
+.input-field {
+  width: 200px;
+}
+table {
+  text-align: center;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -29,6 +35,7 @@ body header #showaccount a {
   font-size: 14px;
 }
 body footer {
+  height: 50px;
   background: #aad0f2;
   text-align: center;
 }
@@ -49,5 +56,29 @@ input.input-validation-error {
 input.input-validation-error:focus {
   border: #f64ece 2px solid;
   background-color: #ffd4f6;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.wrapper {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.content {
+  display: table-row;
+  height: 100%;
+}
+table {
+  margin: auto;
+  margin-top: 30px;
+}
+table td {
+  height: 30px;
 }
 /*# sourceMappingURL=Site.css.map */

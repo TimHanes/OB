@@ -12,6 +12,8 @@ namespace OnlineBankingForManagers.WebUI.Models
         public PagingInfo PagingInfo { get; set; }
         public string CurrentStatus { get; set; }
         public string CurrentSort { get; set; }
+
+        public int CurrentPageSaze { get; set; }
        
     }
 }
