@@ -6,66 +6,66 @@
 }
 
 
-
-    @using (Html.BeginForm())
+<div class="center">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form" }))
     {
-        
-            @Html.ValidationSummary(true)
-            <table >
-                <tr>
-                    <td></td>
-                    <td>Please enter your credenlials:</td>
-                </tr>
-                <tr>
 
-                    <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
-                    <td>
-                        @Html.TextBoxFor(m => m.UserName, new
+        @Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td></td>
+                <td>Please enter your credenlials:</td>
+            </tr>
+            <tr>
+
+                <td class="label-input-field">@Html.LabelFor(m => m.UserName):</td>
+                <td>
+                    @Html.TextBoxFor(m => m.UserName, new
                         {
                             @placeholder = "Type your login",
                             @class = "focus input-field",
                             @title = "Your username."
                         })
-                    </td>
-                    <td>@Html.ValidationMessageFor(m => m.UserName)</td>
-                </tr>
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.UserName)</td>
+            </tr>
 
-                <tr>
-                    <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
-                    <td>
-                        @Html.PasswordFor(m => m.Password, new
+            <tr>
+                <td class="label-input-field">@Html.LabelFor(m => m.Password):</td>
+                <td>
+                    @Html.PasswordFor(m => m.Password, new
                         {
                             @class = "input-field",
                             @placeholder = "Type your password",
                             @title = "Your password."
                         })
-                    </td>
+                </td>
 
-                    <td>@Html.ValidationMessageFor(m => m.Password)</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="checkbox">
-                        @Html.CheckBoxFor(m => m.RememberMe, new
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe, new
                         {
                             @title = "For remember user."
                         })
-                        - @Html.LabelFor(m => m.RememberMe)
-                    </td>
-                    <td>@Html.ValidationMessageFor(m => m.RememberMe)</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input class="ui-button" type="submit" value="Submit" title="Press for submit" /></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>@Html.ActionLink("Register new account", "Register")</td>
-                </tr>
+                    - @Html.LabelFor(m => m.RememberMe)
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.RememberMe)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="ui-button" type="submit" value="Submit" title="Press for submit" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ActionLink("Register new account", "Register")</td>
+            </tr>
 
-            </table>
-        
-        
+        </table>
     }
+</div>
+
 
 

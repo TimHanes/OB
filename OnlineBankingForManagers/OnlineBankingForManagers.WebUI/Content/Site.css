@@ -4,11 +4,23 @@
 [onclick] {
   cursor: pointer;
 }
-.input-field {
-  width: 200px;
+.center table {
+  text-align: center;
+  margin: auto;
+}
+.center table .checkbox {
+  text-align: left;
 }
 table {
-  text-align: center;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+table td {
+  height: 30px;
+}
+.input-field {
+  width: 200px;
+  text-align: left;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -20,7 +32,7 @@ body header {
 }
 body header img {
   vertical-align: middle;
-  border: 10px solid #2c77ba;
+  border: 20px solid #2c77ba;
 }
 body header a {
   font-size: 20px;
@@ -35,7 +47,7 @@ body header #showaccount a {
   font-size: 14px;
 }
 body footer {
-  height: 50px;
+  padding: 1% 0;
   background: #aad0f2;
   text-align: center;
 }
@@ -57,9 +69,11 @@ input.input-validation-error:focus {
   border: #f64ece 2px solid;
   background-color: #ffd4f6;
 }
+.label-input-field {
+  text-align: right;
+}
 * {
   margin: 0;
-  padding: 0;
 }
 html,
 body {
@@ -74,11 +88,15 @@ body {
   display: table-row;
   height: 100%;
 }
-table {
-  margin: auto;
-  margin-top: 30px;
-}
-table td {
-  height: 30px;
+[type="submit"] {
+  background: -moz-linear-gradient(#f3f3f3, #898989);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#f3f3f3), to(#898989));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f3f3f3, endColorstr=#898989);
+  padding: 3px 25px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #dedede;
+  font-size: 12px;
 }
 /*# sourceMappingURL=Site.css.map */
