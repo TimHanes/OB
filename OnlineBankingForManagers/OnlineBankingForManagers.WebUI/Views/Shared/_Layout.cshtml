@@ -38,9 +38,9 @@
                     if (name != "")
                     {
                         <a title=" Your login">You are loggend in as @name</a>
-                        @Html.ActionLink("Logout", "LogOff", "Account", null, new {@title = "Logout"})
+                        @Html.ActionLink("Logout", "LogOff", "Account", null, new { @title = "Logout", @style = "padding:10px;" })
                     }
-                }
+}
             </div>
         </div>
 

@@ -14,6 +14,10 @@
 @select-border-solid:2px solid;
 @start-button-color:#f3f3f3;
 @end-button-color:#898989;
+@return-link-color:#060058;
+@start-list-color:#effbfa;
+@end-list-color:#cdedee;
+ 
 
 span{ 
     color: @span-color;
@@ -34,9 +38,7 @@ span{
     }
 }
 
-table{ 
-    margin-left: 10%;
-     margin-top: 5%;
+table{    
     td{height:30px;}      
 }
 
@@ -62,8 +64,8 @@ body {
         #showaccount {
             a{font-size:14px;}
             position:absolute;
-            bottom:0;
-            right:0;
+            bottom:10%;
+            right:1%;
             text-align:right;     
         }    
     } 
@@ -132,8 +134,88 @@ body {
     font-size:12px;
 }
 
+.return-link{
+    line-height: 5;
+    color: @return-link-color;
+}
+.return-link:visited {
+    color: @return-link-color; 
+}
+.return-link:active {
+    color: red; 
+}
+  
+.pager{
+    a{   
+        padding: 3px 10px;
+        text-decoration:none;
+        font-size:20px;
+        border-color: blue;
+        border-radius: 3px;
+        border:1px solid;
+    }
+            position:absolute;
+            bottom:10%;
+            right:10%;
+            text-align:center;
+   color: @return-link-color;  
+}
 
-
-
-
+.list{
+     margin-left: 10%;
+    font-size:12px;
+    text-align:center;   
+   th{width:100px; height: 20px;
+      border:2px solid @end-list-color;
+      background: -moz-linear-gradient(@start-list-color, @end-list-color);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(@start-list-color), to(@end-list-color));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start-list-color, endColorstr=@end-list-color);
+   }
+   td{
+       height: 20px;
+      border:2px solid @end-list-color;
+   }
+   border-collapse: collapse ;
+}
+  
+#clients-on-page{
+   padding:3% 0; 
+   text-align:center;  
+   .text-box{width:50px;}
+}
    
+.menu {
+     text-align:center;  
+    position:absolute;           
+            left:1%;
+    a{                
+        text-decoration:none;
+        font-size:20px; 
+        line-height: 2;
+        display:table;
+    height:10px;
+    width:70px;     
+    }    
+}
+
+.new-client{
+    padding:3% 0; 
+  float:left;
+      margin-left:1%;
+      font-size:20px; 
+}
+
+.selected{
+ background: -moz-linear-gradient(@start-button-color, @end-button-color);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(@start-button-color), to(@end-button-color));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start-button-color, endColorstr=@end-button-color);
+    }
+ .unselected{  
+  background: -moz-linear-gradient(@start-list-color, @end-list-color);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(@start-list-color), to(@end-list-color));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start-list-color, endColorstr=@end-list-color);
+  }
+ .table-input-fields{
+     margin-left:15%;
+     margin-top:5%;
+ }

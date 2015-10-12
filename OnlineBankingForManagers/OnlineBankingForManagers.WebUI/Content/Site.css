@@ -11,10 +11,6 @@
 .center table .checkbox {
   text-align: left;
 }
-table {
-  margin-left: 10%;
-  margin-top: 5%;
-}
 table td {
   height: 30px;
 }
@@ -39,8 +35,8 @@ body header a {
 }
 body header #showaccount {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 10%;
+  right: 1%;
   text-align: right;
 }
 body header #showaccount a {
@@ -98,5 +94,88 @@ body {
   border-radius: 3px;
   border: 1px solid #dedede;
   font-size: 12px;
+}
+.return-link {
+  line-height: 5;
+  color: #060058;
+}
+.return-link:visited {
+  color: #060058;
+}
+.return-link:active {
+  color: red;
+}
+.pager {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  text-align: center;
+  color: #060058;
+}
+.pager a {
+  padding: 3px 10px;
+  text-decoration: none;
+  font-size: 20px;
+  border-color: blue;
+  border-radius: 3px;
+  border: 1px solid;
+}
+.list {
+  margin-left: 10%;
+  font-size: 12px;
+  text-align: center;
+  border-collapse: collapse ;
+}
+.list th {
+  width: 100px;
+  height: 20px;
+  border: 2px solid #cdedee;
+  background: -moz-linear-gradient(#effbfa, #cdedee);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#effbfa), to(#cdedee));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#effbfa, endColorstr=#cdedee);
+}
+.list td {
+  height: 20px;
+  border: 2px solid #cdedee;
+}
+#clients-on-page {
+  padding: 3% 0;
+  text-align: center;
+}
+#clients-on-page .text-box {
+  width: 50px;
+}
+.menu {
+  text-align: center;
+  position: absolute;
+  left: 1%;
+}
+.menu a {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 2;
+  display: table;
+  height: 10px;
+  width: 70px;
+}
+.new-client {
+  padding: 3% 0;
+  float: left;
+  margin-left: 1%;
+  font-size: 20px;
+}
+.selected {
+  background: -moz-linear-gradient(#f3f3f3, #898989);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#f3f3f3), to(#898989));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f3f3f3, endColorstr=#898989);
+}
+.unselected {
+  background: -moz-linear-gradient(#effbfa, #cdedee);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#effbfa), to(#cdedee));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#effbfa, endColorstr=#cdedee);
+}
+.table-input-fields {
+  margin-left: 15%;
+  margin-top: 5%;
 }
 /*# sourceMappingURL=Site.css.map */

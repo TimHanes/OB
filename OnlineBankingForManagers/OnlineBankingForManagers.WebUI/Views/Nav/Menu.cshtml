@@ -1,22 +1,26 @@
 ﻿@model IEnumerable<string>
 
-
-@Html.ActionLink("Home", "List", "Client")
+<h3>Status filter</h3>
+<p></p>
+@Html.ActionLink("All", "List", "Client", null, new { @class = "unselected" })
 
 @foreach (var link in Model)
 {
-  @Html.RouteLink(link, new
+    <p>
+        @Html.RouteLink(link, new
     {
-      controller = "Client",
-      action = "List",
-      status = link,
-      page = 1
+        controller = "Client",
+        action = "List",
+        status = link,
+        page = 1
     },
-    new {
-        @class = link == ViewBag.SelectedStatus ? "selected" : null,
-        @title = "Choos filter"
-  })
+    new
+    {
+        @class = link == ViewBag.SelectedStatus ? "selected" : "unselected",
+        @title = "Choose filter"
+    })
+    </p>
 }
-<p>@Html.ActionLink("Add a new client", "Create", "Client", null ,new{title = "Add new client"})</p>
+
 
         

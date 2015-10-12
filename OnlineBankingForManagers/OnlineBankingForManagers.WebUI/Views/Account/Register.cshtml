@@ -82,11 +82,14 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Submit" title="Press for submit" /></td>
+            <td><input type="submit" value="Submit" title="Press for submit"/></td>
         </tr>
+        <tr>
+            <td>@Html.ActionLink("Cancel and return to Login", "Login", null, new{@class="return-link"})</td>
+        </tr>
+
+
+
+
     </table>
 }
-
-
-        @Html.ActionLink("Cancel and return to Login", "Login")
-  
